@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            width: 350px;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: none;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo h1 {
+            font-size: 28px;
+            color: #1877f2;
+            font-weight: bold;
+        }
+        .form-container {
+            text-align: center;
+        }
+        .form-container h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .input-container {
+            position: relative;
+            width: 100%;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="password"]:focus, input[type="email"]:focus, input[type="text"]:focus {
+            border-color: #1877f2;
+            outline: none;
+        }
+        .show-password-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #888;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #145dbf;
+        }
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+        .terms {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+        }
+        .terms a {
+            color: #1877f2;
+            text-decoration: none;
+        }
+        .terms a:hover {
+            text-decoration: underline;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-link a {
+            color: #1877f2;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .profile-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .profile-container h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .profile-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .profile-item {
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .profile-item button {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .profile-item button:hover {
+            background-color: darkred;
+        }
+        .profile-item .btn-update {
+            background-color: #1877f2;
+            margin-right: 5px;
+        }
+        .profile-item .btn-update:hover {
+            background-color: #145dbf;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="signup-container" class="container">
+        <div class="logo">
+            <h1>Bright Future Tech</h1>
+        </div>
+        <div class="form-container">
+            <h2>Create Account</h2>
+            <form id="signup-form">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="show-password-icon" id="signup-show-password">&#128065;</span>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p class="terms">By signing up, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+        </div>
+        <div class="login-link">
+            <p>Already have an account? <a href="#" onclick="togglePage('login')">Log in</a></p>
+        </div>
+    </div>
+
+    <div id="login-container" class="container">
+        <div class="logo">
+            <h1>Bright Future Tech</h1>
+        </div>
+        <div class="form-container">
+            <h2>Log In</h2>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Email Address" required>
+                <div class="input-container">
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <span class="show-password-icon" id="login-show-password">&#128065;</span>
+                </div>
+                <button type="submit" class="btn">Log In</button>
+            </form>
+        </div>
+        <div class="login-link">
+            <p>Don't have an account? <a href="#" onclick="togglePage('signup')">Sign up</a></p>
+        </div>
+    </div>
+
+    <div id="profile-container" class="container" style="display: none;">
+        <div class="logo">
+            <h1>Welcome to Your Profile</h1>
+        </div>
+        <div class="profile-container">
+            <h2>Manage Your Profiles</h2>
+            <button class="btn" onclick="createProfile()">Add Profile</button>
+            <ul id="profile-list" class="profile-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        function togglePage(page) {
+            if (page === 'signup') {
+                document.getElementById('signup-container').style.display = 'block';
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('profile-container').style.display = 'none';
+            } else if (page === 'login') {
+                document.getElementById('login-container').style.display = 'block';
+                document.getElementById('signup-container').style.display = 'none';
+                document.getElementById('profile-container').style.display = 'none';
+            }
+        }
+
+        togglePage('signup');
+
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (!email || !password || !confirmPassword) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            const user = { email, password };
+            localStorage.setItem('user', JSON.stringify(user));
+
+            alert('Signup successful!');
+            togglePage('login');
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user || user.email !== email || user.password !== password) {
+                alert('Invalid login credentials.');
+                return;
+            }
+
+            alert('Login successful!');
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('profile-container').style.display = 'block';
+            loadProfiles();
+        });
+
+        function createProfile() {
+            const profileName = prompt('Enter profile name:');
+            if (profileName) {
+                let profiles = JSON.parse(localStorage.getItem('profiles')) || [];
+                profiles.push(profileName);
+                localStorage.setItem('profiles', JSON.stringify(profiles));
+                loadProfiles();
+            }
+        }
+
+        function loadProfiles() {
+            const profiles = JSON.parse(localStorage.getItem('profiles')) || [];
+            const profileList = document.getElementById('profile-list');
+            profileList.innerHTML = '';
+
+            profiles.forEach((profile, index) => {
+                const li = document.createElement('li');
+                li.classList.add('profile-item');
+                li.innerHTML = `
+                    ${profile}
+                    <div>
+                        <button class="btn-small btn-update" onclick="editProfile(${index})">Update</button>
+                        <button class="btn-small" onclick="deleteProfile(${index})">Delete</button>
+                    </div>
+                `;
+                profileList.appendChild(li);
+            });
+        }
+
+        function editProfile(index) {
+            const profiles = JSON.parse(localStorage.getItem('profiles')) || [];
+            const newName = prompt('Update profile name:', profiles[index]);
+            if (newName) {
+                profiles[index] = newName;
+                localStorage.setItem('profiles', JSON.stringify(profiles));
+                loadProfiles();
+            }
+        }
+
+        function deleteProfile(index) {
+            let profiles = JSON.parse(localStorage.getItem('profiles')) || [];
+            profiles.splice(index, 1);
+            localStorage.setItem('profiles', JSON.stringify(profiles));
+            loadProfiles();
+        }
+
+        document.getElementById('signup-show-password').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                this.innerHTML = '&#128586;';
+            } else {
+                passwordField.type = 'password';
+                this.innerHTML = '&#128065;';
+            }
+        });
+
+        document.getElementById('login-show-password').addEventListener('click', function() {
+            const passwordField = document.getElementById('login-password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                this.innerHTML = '&#128586;';
+            } else {
+                passwordField.type = 'password';
+                this.innerHTML = '&#128065;';
+            }
+        });
+
+        loadProfiles();
+    </script>
+
+</body>
+</html>
